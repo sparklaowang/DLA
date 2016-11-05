@@ -7,6 +7,7 @@ int main(int argc,char **argv)
 	srand(time(NULL));
 	int **map , **musk;	
 	int i =1,j=0,edge = atoi(argv[2]);
+	//edge is aplitude for map and musk
 	map = (int **)malloc(edge*sizeof(int *));
 	musk = (int **)malloc(edge*sizeof(int *));
 	for(i=0;i<edge;i++)
@@ -22,8 +23,9 @@ int main(int argc,char **argv)
 		}
 	musk[edge/2][edge/2] =1;
 	map[edge/2][edge/2] =1;
+	//initialize  --- a particle at the center of musk and map as "seed"
 	int con = 0;
-	char CAYSM  =0 ;
+	char CAYSM  =0 ;//call symbol , used to determine where to generate the particle
 	while(con++ < atoi(argv[1]))
 	{
 		//gennerating
@@ -54,7 +56,7 @@ int main(int argc,char **argv)
 			if(CAYSM == 4)
 				CAYSM = 0;
 		}
-		//revolution
+		//evolution
 		int x,y,n_x,n_y,sym;
 		for(i=0;i<edge;i++)
 		{
@@ -92,16 +94,7 @@ int main(int argc,char **argv)
 
 			}
 		}
-/*		for(i=0;i<edge;i++)
-			for(j=0;j<edge;j++)
-			{
-					if(map[i][j])
-							printf("%d,%d\n",i,j);
 
-	
-			}
-*/
-		//getchar();
 	}
 	FILE *fp = fopen("dla.rec","w");
 	for(i=0;i<edge;i++)
